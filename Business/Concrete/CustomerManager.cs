@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities;
 using Entities.Concrete;
@@ -19,23 +21,37 @@ namespace Business.Concrete
             _customerDal = customerDal;
         }
 
-        
-
-        public List<Customer> GetAll()
+        public IResult Add(Customer customer)
         {
-            return _customerDal.GetAll();
+            _customerDal.Add(customer);
+            return new SuccessResult(Messages.CustomerAdded);
         }
 
-        public Customer GetById(int customerId)
+        public IResult Delete(Customer customer)
         {
-            return _customerDal.Get(c=>c.CustomerId==customerId);
+            _customerDal.Delete(customer);
+            return new SuccessResult(Messages.CustomerDeleted);
         }
 
-        public List<CustomerDetailDto> GetCustomerDetails()
+        public IDataResult<List<Customer>> GetAll()
         {
-            return _customerDal.GetCustomerDetails();
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(),Messages.CustomerListed);
         }
 
-       
+        public IDataResult<Customer> GetById(int customerId)
+        {
+            return new SuccessDataResult<Customer>(_customerDal.Get(c=>c.CustomerId==customerId), Messages.CustomerListedById);
+        }
+
+        public IDataResult<List<CustomerDetailDto>> GetCustomerDetails()
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>( _customerDal.GetCustomerDetails(), Messages.CustomerDetailsListed);
+        }
+
+        public IResult Update(Customer customer)
+        {
+            _customerDal.Update(customer);
+            return new SuccessResult(Messages.CustomerUpdated);
+        }
     }
 }
