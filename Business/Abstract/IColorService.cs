@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface ICarService
+    public interface IColorService
     {
-        List<Car> GetAll();
-        Car GetById(int carId);
-        List<CarDetailDto> GetCarDetails();
+        List<Color> GetAll();
+        Color GetById(int colorId);
+        List<ColorDetailDto> GetColorDetails();
         
     }
 }

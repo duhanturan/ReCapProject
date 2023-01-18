@@ -1,0 +1,5 @@
+﻿insert into Cars (CarId, CarName, BrandId,DailyPrice,ModelYear) values (1,'BMW',1,10000,2022)
+insert into Cars (CarId, CarName, BrandId,DailyPrice,ModelYear) values (2,'VW',2,5000,2022)
+insert into Cars (CarId, CarName, BrandId,DailyPrice,ModelYear) values (3,'TOYOTA',3,25000,2022)
+insert into Cars (CarId, CarName, BrandId,DailyPrice,ModelYear) values (4,'HONDA',3,15000,2022)
+insert into Cars (CarId, CarName, BrandId,DailyPrice,ModelYear) values (5,'MERCEDES',1,15000,2022)

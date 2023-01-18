@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
@@ -10,25 +11,51 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //BrandGetAllTest();
+            //CarTest();
+            //ColorTest();
+            //CustomerTest();
             
-            InMemoryCarDal inMemoryCarDal = new InMemoryCarDal();
-            inMemoryCarDal.Add(new Entities.Concrete.Car { BrandID = 4, CarID = 6, DailyPrice = 100000, Description = "BMW", ModelYear = 2023 });
-            
-            foreach (var car in inMemoryCarDal.GetAll())
+        }
+
+        private static void CustomerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            foreach (var customer in customerManager.GetAll())
             {
-                Console.WriteLine(car.Description);
+                Console.WriteLine(customer.CustomerId + "/" + customer.CustomerName);
             }
-            Console.WriteLine("-------------------");
+        }
 
-            
-
-
-            CarManager carManager = new CarManager(new InMemoryCarDal());
-            foreach (var car in carManager.GetAll())
+        private static void ColorTest()
+        {
+            ColorManager colorManager = new ColorManager(new EfColorsDal());
+            foreach (var color in colorManager.GetAll())
             {
-                Console.WriteLine(car.ModelYear);
+                Console.WriteLine(color.ColorName + "/" + color.ColorId);
             }
-        } 
+        }
 
+        private static void CarTest()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.CarName + "/" + car.BrandName);
+            }
+                               
+        }
+
+        private static void BrandGetAllTest()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandsDal());
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.BrandName + "/"+ brand.BrandId);
+            } 
+        }
+
+       
+       
     }
 }

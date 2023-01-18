@@ -1,0 +1,5 @@
+﻿insert into Brands(BrandId,BrandName) values (1,'American')
+insert into Brands(BrandId,BrandName) values (2,'Alman')
+insert into Brands(BrandId,BrandName) values (3,'Japon')
+insert into Brands(BrandId,BrandName) values (4,'Japon')
+insert into Brands(BrandId,BrandName) values (5,'Alman')
