@@ -15,7 +15,16 @@ namespace ConsoleUI
             //CarTest();
             //ColorTest();
             //CustomerTest();
-            
+            RentalTest();
+        }
+
+        private static void RentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            foreach (var rental in rentalManager.GetRentalDetails().Data)
+            {
+                Console.WriteLine(rental.ReturnDate + "/" + rental.CustomerId);
+            }
         }
 
         private static void CustomerTest()
